@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Password Character Styling */
+.password-char {
+  @apply inline-block px-2 py-1 rounded-md text-white font-bold shadow-md transition-all duration-200 border;
+}
+
+.password-char.weak {
+  @apply bg-gradient-to-br from-red-400 to-red-600 border-red-300 shadow-red-500/25;
+}
+
+.password-char.medium {
+  @apply bg-gradient-to-br from-yellow-400 to-orange-500 border-yellow-300 shadow-yellow-500/25;
+}
+
+.password-char.strong {
+  @apply bg-gradient-to-br from-green-400 to-green-600 border-green-300 shadow-green-500/25;
+}
+
+.password-char:not(.weak):not(.medium):not(.strong) {
+  @apply bg-gradient-to-br from-gray-400 to-gray-600 border-gray-300 shadow-gray-500/25;
+}
+
