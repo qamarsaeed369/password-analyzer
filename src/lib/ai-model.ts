@@ -23,7 +23,9 @@ class PasswordAIModel {
     private isReady: boolean = false;
 
     constructor() {
-        this.initializeModel();
+        this.initializeModel().catch(err => {
+            console.warn('AI Model initialization failed (using heuristic fallback):', err);
+        });
     }
 
     /**
@@ -77,11 +79,40 @@ class PasswordAIModel {
 
     /**
      * Load pre-trained weights from JSON file (98.44% accuracy on 17,000 passwords)
+     * Handles both Client-Side (fetch) and Server-Side (fs) loading
      */
     private async loadTrainedWeights() {
         try {
-            const response = await fetch('/trained-weights-v2.json');
-            const weightsData = await response.json();
+            let weightsData: any;
+
+            // Environment Check
+            if (typeof window === 'undefined') {
+                // SERVER-SIDE (Node.js/Next.js API)
+                try {
+                    // Dynamically import fs/path to avoid client-side bundle errors
+                    const fs = await import('fs');
+                    const path = await import('path');
+
+                    const filePath = path.join(process.cwd(), 'public', 'trained-weights-v2.json');
+
+                    if (fs.existsSync(filePath)) {
+                        const fileContent = fs.readFileSync(filePath, 'utf-8');
+                        weightsData = JSON.parse(fileContent);
+                    } else {
+                        // If file not found on server, fallback gracefully without crashing
+                        console.warn(`Weights file not found at ${filePath}, using heuristic.`);
+                        throw new Error('Weights file missing on server');
+                    }
+                } catch (e) {
+                    console.warn('Server-side weight loading failed:', e);
+                    throw e;
+                }
+            } else {
+                // CLIENT-SIDE (Browser)
+                const response = await fetch('/trained-weights-v2.json');
+                if (!response.ok) throw new Error('Failed to fetch weights file');
+                weightsData = await response.json();
+            }
 
             // Convert JSON data to tensors
             const weights = weightsData.map((w: any) => {
@@ -91,9 +122,9 @@ class PasswordAIModel {
             // Set the weights
             this.model!.setWeights(weights);
 
-            console.log('✅ Loaded trained weights (98.44% accuracy)');
+            if (typeof window !== 'undefined') console.log('✅ Loaded trained weights (Client-Side)');
         } catch (error) {
-            console.error('Failed to load trained weights, using fallback:', error);
+            console.warn('Failed to load trained weights, using fallback:', error);
             // Fallback to old method if weights file not found
             await this.initializeWeightsFallback();
         }
