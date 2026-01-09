@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Shield, AlertTriangle, Lightbulb, Target, Loader, RefreshCw } from 'lucide-react';
 import { cn } from '@/utils/cn';
 import type { PasswordAnalysis, AIPasswordAnalysis } from '@/types';
-import { getAIModel, type PasswordFeatures } from '@/lib/ai-model';
+import { getAIModel, type PasswordFeatures } from '@/lib/ai-model-client';
 import {
   generateVulnerabilities,
   generateRecommendations,
