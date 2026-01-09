@@ -1,6 +1,5 @@
 /**
- * Helper functions for generating password analysis reports
- * Used by both client and server logic
+ * Helper functions for password analysis
  */
 
 export interface HelperAnalysisInput {
@@ -16,7 +15,6 @@ export interface HelperAnalysisInput {
 export function generateVulnerabilities(analysis: HelperAnalysisInput, score: number): string[] {
     const vulns: string[] = [];
 
-    // NIST SP 800-63B Guidelines & Research Thresholds
     if (analysis.length < 8) {
         vulns.push('Crucial Vulnerability: Length < 8 characters (NIST Violation)');
     }
@@ -65,7 +63,6 @@ export function generateRecommendations(analysis: HelperAnalysisInput, score: nu
 }
 
 export function generateThreatAnalysis(score: number, analysis: HelperAnalysisInput): string {
-    // Mapping Score to Research-Standard Resistance Levels
     if (score >= 90) {
         return 'Security Level: EXCELLENT. Entropy indicates resistance to brute-force attacks even by state-level actors. Estimated offline crack time exceeds current hardware capabilities (centuries).';
     } else if (score >= 75) {

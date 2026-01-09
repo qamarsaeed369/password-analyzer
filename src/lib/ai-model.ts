@@ -4,7 +4,6 @@ import * as tf from '@tensorflow/tfjs';
 
 /**
  * Client-Side Neural Network for Password Strength Prediction
- * Architecture: Input -> Dense(128, ReLU) -> Dense(64, ReLU) -> Dense(1, Sigmoid)
  */
 
 interface PasswordFeatures {
@@ -50,7 +49,6 @@ class PasswordAIModel {
             // Create Sequential Model
             this.model = tf.sequential({
                 layers: [
-                    // Input layer (9 features)
                     tf.layers.dense({
                         inputShape: [9],
                         units: 128,
@@ -58,14 +56,12 @@ class PasswordAIModel {
                         kernelInitializer: 'heNormal',
                         name: 'hidden_layer_1'
                     }),
-                    // Hidden layer 2
                     tf.layers.dense({
                         units: 64,
                         activation: 'relu',
                         kernelInitializer: 'heNormal',
                         name: 'hidden_layer_2'
                     }),
-                    // Output layer
                     tf.layers.dense({
                         units: 1,
                         activation: 'sigmoid',

@@ -12,8 +12,6 @@ interface PasswordAnalysis {
 
 /**
  * Client-Side AI Analysis Route
- * All computation happens in the browser - NO data leaves the device
- * Implements secure client-side analysis architecture
  */
 export async function POST(request: NextRequest) {
   try {
@@ -41,8 +39,6 @@ export async function POST(request: NextRequest) {
     const hasSymbols = composition?.symbols > 0;
 
     // SERVER-SIDE HEURISTIC FALLBACK
-    // We avoid loading TensorFlow.js on the server to prevent Vercel/Node environment issues.
-    // The "Real" AI analysis happens in the browser. This API endpoint serves as a reliable backend verifier.
 
     let securityScore = 0;
     const diversity = (hasUppercase ? 1 : 0) + (hasLowercase ? 1 : 0) + (hasNumbers ? 1 : 0) + (hasSymbols ? 1 : 0);

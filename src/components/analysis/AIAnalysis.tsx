@@ -34,12 +34,10 @@ export const AIAnalysis: React.FC<AIAnalysisProps> = ({
       setLoading(true);
       setError(null);
 
-      // Artificial delay for UX (too fast feels fake) - reduced from network latency time
+      // UX Delay
       await new Promise(resolve => setTimeout(resolve, 800));
 
       // 1. Prepare features for AI Model
-      // We reconstruct the feature vector from the analysis object 
-      // without needing the raw password string.
       const comp = analysis.composition;
       const entropyDetails = analysis.entropyDetails;
 
@@ -58,7 +56,7 @@ export const AIAnalysis: React.FC<AIAnalysisProps> = ({
           (comp.symbols > 0 ? 1 : 0)
       };
 
-      // 2. Run TensorFlow.js Prediction (Client-Side)
+      // 2. Run Prediction
       const aiModel = getAIModel();
       const securityScore = await aiModel.predictFeatures(features);
 
