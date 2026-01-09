@@ -34,32 +34,38 @@ export async function POST(request: NextRequest) {
     const composition = analysisData.composition;
     const entropy = analysisData.entropy;
 
-    // Create a synthetic password representation for the AI model
-    // Since we don't have the actual password (privacy), we'll use the characteristics
+    // Create a synthetic password representation for the analysis
     const passwordLength = composition?.length || 8;
     const hasUppercase = composition?.uppercase > 0;
     const hasLowercase = composition?.lowercase > 0;
     const hasNumbers = composition?.digits > 0;
     const hasSymbols = composition?.symbols > 0;
 
-    // Get the client-side AI model
-    const aiModel = getAIModel();
+    // SERVER-SIDE HEURISTIC FALLBACK
+    // We avoid loading TensorFlow.js on the server to prevent Vercel/Node environment issues.
+    // The "Real" AI analysis happens in the browser. This API endpoint serves as a reliable backend verifier.
 
-    // Create a synthetic password string based on characteristics for prediction
-    // This is a workaround since the actual password isn't sent (privacy-first)
-    let syntheticPassword = '';
-    if (hasLowercase) syntheticPassword += 'a'.repeat(Math.floor(passwordLength / 4));
-    if (hasUppercase) syntheticPassword += 'A'.repeat(Math.floor(passwordLength / 4));
-    if (hasNumbers) syntheticPassword += '1'.repeat(Math.floor(passwordLength / 4));
-    if (hasSymbols) syntheticPassword += '!'.repeat(Math.floor(passwordLength / 4));
-    syntheticPassword = syntheticPassword.substring(0, passwordLength);
+    let securityScore = 0;
+    const diversity = (hasUppercase ? 1 : 0) + (hasLowercase ? 1 : 0) + (hasNumbers ? 1 : 0) + (hasSymbols ? 1 : 0);
 
-    // Run Neural Network prediction
-    const securityScore = await aiModel.predict(syntheticPassword);
+    // 1. Length Score
+    if (passwordLength >= 16) securityScore += 40;
+    else if (passwordLength >= 12) securityScore += 30;
+    else if (passwordLength >= 8) securityScore += 20;
+    else securityScore += passwordLength * 2;
+
+    // 2. Diversity Score
+    securityScore += diversity * 10;
+
+    // 3. Entropy Bonus
+    securityScore += Math.min(20, (entropy || 0) / 4);
+
+    // Caps
+    securityScore = Math.min(100, Math.max(0, securityScore));
 
     // Create analysis object for helper functions
     const analysis = {
-      password: syntheticPassword,
+      password: "HIDDEN-ON-SERVER",
       length: passwordLength,
       hasUppercase,
       hasLowercase,
