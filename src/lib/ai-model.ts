@@ -23,15 +23,30 @@ class PasswordAIModel {
     private isReady: boolean = false;
 
     constructor() {
-        this.initializeModel().catch(err => {
-            console.warn('AI Model initialization failed (using heuristic fallback):', err);
-        });
+        // Only initialize in browser environment
+        if (typeof window !== 'undefined') {
+            this.initializeModel().catch(err => {
+                console.warn('AI Model initialization failed (using heuristic fallback):', err);
+                this.isReady = false; // Ensure we use fallback
+            });
+        } else {
+            console.log('⚠️ AI Model not initialized (server-side environment)');
+            this.isReady = false;
+        }
     }
 
     /**
      * Initialize the Neural Network with the architecture from dissertation
+     * ONLY runs in browser environment to prevent serverless/SSR issues
      */
     private async initializeModel() {
+        // CRITICAL: Prevent server-side initialization
+        // TensorFlow.js should ONLY run in the browser for this application
+        if (typeof window === 'undefined') {
+            console.log('⚠️ Skipping AI model initialization on server-side');
+            return;
+        }
+
         try {
             // Create Sequential Model
             this.model = tf.sequential({
@@ -336,6 +351,16 @@ const globalForModel = globalThis as unknown as {
 };
 
 export const getAIModel = (): PasswordAIModel => {
+    // Only create model instance in browser environment
+    if (typeof window === 'undefined') {
+        // Return a dummy instance that will use fallback heuristics
+        // This prevents server-side TensorFlow.js initialization
+        if (!globalForModel.modelInstance) {
+            globalForModel.modelInstance = new PasswordAIModel();
+        }
+        return globalForModel.modelInstance;
+    }
+
     if (!globalForModel.modelInstance) {
         globalForModel.modelInstance = new PasswordAIModel();
     }
