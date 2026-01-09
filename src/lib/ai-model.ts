@@ -5,7 +5,6 @@ import * as tf from '@tensorflow/tfjs';
 /**
  * Client-Side Neural Network for Password Strength Prediction
  * Architecture: Input -> Dense(128, ReLU) -> Dense(64, ReLU) -> Dense(1, Sigmoid)
- * As described in dissertation Chapter 4.3.3
  */
 
 interface PasswordFeatures {
@@ -38,12 +37,10 @@ class PasswordAIModel {
     }
 
     /**
-     * Initialize the Neural Network with the architecture from dissertation
-     * ONLY runs in browser environment to prevent serverless/SSR issues
+     * Initialize the Neural Network
      */
     private async initializeModel() {
         // CRITICAL: Prevent server-side initialization
-        // TensorFlow.js should ONLY run in the browser for this application
         if (typeof window === 'undefined') {
             console.log('⚠️ Skipping AI model initialization on server-side');
             return;
@@ -68,7 +65,7 @@ class PasswordAIModel {
                         kernelInitializer: 'heNormal',
                         name: 'hidden_layer_2'
                     }),
-                    // Output layer (security score 0-100)
+                    // Output layer
                     tf.layers.dense({
                         units: 1,
                         activation: 'sigmoid',
@@ -84,7 +81,7 @@ class PasswordAIModel {
                 metrics: ['mae']
             });
 
-            // Load trained weights (98.44% accuracy)
+            // Load trained weights
             await this.loadTrainedWeights();
 
             this.isReady = true;
@@ -95,7 +92,7 @@ class PasswordAIModel {
     }
 
     /**
-     * Load pre-trained weights from JSON file (98.44% accuracy on 17,000 passwords)
+     * Load pre-trained weights from JSON file
      * Handles both Client-Side (fetch) and Server-Side (fs) loading
      */
     private async loadTrainedWeights() {
@@ -213,7 +210,7 @@ class PasswordAIModel {
     }
 
     /**
-     * Extract features from password (Chapter 3.5.4)
+     * Extract features from password
      */
     private extractFeatures(password: string): PasswordFeatures {
         const hasLowercase = /[a-z]/.test(password) ? 1 : 0;
@@ -225,7 +222,7 @@ class PasswordAIModel {
         const uniqueRatio = password.length > 0 ? uniqueChars / password.length : 0;
         const charDiversity = hasLowercase + hasUppercase + hasDigit + hasSpecial;
 
-        // Calculate Shannon Entropy (Chapter 3.5.1)
+        // Calculate Shannon Entropy
         let charsetSize = 0;
         if (hasLowercase) charsetSize += 26;
         if (hasUppercase) charsetSize += 26;
@@ -249,7 +246,6 @@ class PasswordAIModel {
 
     /**
      * Predict password strength using pre-extracted features
-     * Uses trained neural network (98.44% accuracy)
      */
     async predictFeatures(features: PasswordFeatures): Promise<number> {
         if (!this.model || !this.isReady) {
@@ -303,7 +299,6 @@ class PasswordAIModel {
 
     /**
      * Predict password strength using Neural Network
-     * Returns score 0-100
      */
     async predict(password: string): Promise<number> {
         const features = this.extractFeatures(password);

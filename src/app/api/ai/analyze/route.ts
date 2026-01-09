@@ -13,7 +13,7 @@ interface PasswordAnalysis {
 /**
  * Client-Side AI Analysis Route
  * All computation happens in the browser - NO data leaves the device
- * Implements dissertation Chapter 4.3.3 architecture
+ * Implements secure client-side analysis architecture
  */
 export async function POST(request: NextRequest) {
   try {

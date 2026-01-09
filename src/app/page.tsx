@@ -56,8 +56,8 @@ export default function Home() {
 
   return (
     <div className={`min-h-screen transition-all duration-500 ${isDark
-        ? 'bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900'
-        : 'bg-gradient-to-br from-indigo-50 via-white to-cyan-50'
+      ? 'bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900'
+      : 'bg-gradient-to-br from-indigo-50 via-white to-cyan-50'
       }`}>
       {/* Animated Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
@@ -71,8 +71,8 @@ export default function Home() {
 
       {/* Header */}
       <header className={`sticky top-0 z-50 backdrop-blur-md border-b transition-all duration-300 ${isDark
-          ? 'bg-slate-900/80 border-slate-700/50'
-          : 'bg-white/80 border-gray-200/50'
+        ? 'bg-slate-900/80 border-slate-700/50'
+        : 'bg-white/80 border-gray-200/50'
         }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
@@ -83,16 +83,16 @@ export default function Home() {
               transition={{ duration: 0.6 }}
             >
               <div className={`relative p-2 rounded-xl ${isDark
-                  ? 'bg-gradient-to-br from-purple-500 to-blue-600'
-                  : 'bg-gradient-to-br from-blue-500 to-purple-600'
+                ? 'bg-gradient-to-br from-purple-500 to-blue-600'
+                : 'bg-gradient-to-br from-blue-500 to-purple-600'
                 }`}>
                 <Shield className="w-8 h-8 text-white" />
                 <div className="absolute inset-0 rounded-xl bg-white/20 animate-pulse" />
               </div>
               <div>
                 <h1 className={`text-2xl font-bold bg-gradient-to-r ${isDark
-                    ? 'from-white to-gray-300'
-                    : 'from-gray-900 to-gray-600'
+                  ? 'from-white to-gray-300'
+                  : 'from-gray-900 to-gray-600'
                   } bg-clip-text text-transparent`}>
                   PassShield
                 </h1>
@@ -113,8 +113,8 @@ export default function Home() {
               <button
                 onClick={() => setShowTutorial(true)}
                 className={`p-3 rounded-xl transition-all duration-300 hover:scale-105 ${isDark
-                    ? 'text-gray-300 hover:text-white hover:bg-slate-800/50 hover:shadow-lg hover:shadow-purple-500/25'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-white/50 hover:shadow-lg hover:shadow-blue-500/25'
+                  ? 'text-gray-300 hover:text-white hover:bg-slate-800/50 hover:shadow-lg hover:shadow-purple-500/25'
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-white/50 hover:shadow-lg hover:shadow-blue-500/25'
                   } backdrop-blur-sm`}
               >
                 <HelpCircle className="w-5 h-5" />
@@ -123,8 +123,8 @@ export default function Home() {
               <button
                 onClick={() => setIsDark(!isDark)}
                 className={`p-3 rounded-xl transition-all duration-300 hover:scale-105 ${isDark
-                    ? 'text-gray-300 hover:text-white hover:bg-slate-800/50 hover:shadow-lg hover:shadow-purple-500/25'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-white/50 hover:shadow-lg hover:shadow-blue-500/25'
+                  ? 'text-gray-300 hover:text-white hover:bg-slate-800/50 hover:shadow-lg hover:shadow-purple-500/25'
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-white/50 hover:shadow-lg hover:shadow-blue-500/25'
                   } backdrop-blur-sm`}
               >
                 {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -135,8 +135,8 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`p-3 rounded-xl transition-all duration-300 hover:scale-105 ${isDark
-                    ? 'text-gray-300 hover:text-white hover:bg-slate-800/50 hover:shadow-lg hover:shadow-purple-500/25'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-white/50 hover:shadow-lg hover:shadow-blue-500/25'
+                  ? 'text-gray-300 hover:text-white hover:bg-slate-800/50 hover:shadow-lg hover:shadow-purple-500/25'
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-white/50 hover:shadow-lg hover:shadow-blue-500/25'
                   } backdrop-blur-sm`}
               >
                 <Github className="w-5 h-5" />
@@ -162,8 +162,8 @@ export default function Home() {
             </span>
           </div>
           <h2 className={`text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r ${isDark
-              ? 'from-white via-gray-100 to-gray-300'
-              : 'from-gray-900 via-gray-800 to-gray-600'
+            ? 'from-white via-gray-100 to-gray-300'
+            : 'from-gray-900 via-gray-800 to-gray-600'
             } bg-clip-text text-transparent`}>
             Secure Your Digital Life
           </h2>
@@ -181,8 +181,8 @@ export default function Home() {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <div className={`flex items-center justify-center gap-2 p-2 rounded-2xl backdrop-blur-md border transition-all ${isDark
-              ? 'bg-slate-800/50 border-slate-700/50'
-              : 'bg-white/50 border-gray-200/50'
+            ? 'bg-slate-800/50 border-slate-700/50'
+            : 'bg-white/50 border-gray-200/50'
             }`}>
             <button
               onClick={() => handleTabSwitch('analyze')}
@@ -242,8 +242,8 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
             className={`relative overflow-hidden rounded-2xl backdrop-blur-md border transition-all ${isDark
-                ? 'bg-slate-900/50 border-slate-700/50 shadow-2xl shadow-purple-500/10'
-                : 'bg-white/70 border-gray-200/50 shadow-2xl shadow-blue-500/10'
+              ? 'bg-slate-900/50 border-slate-700/50 shadow-2xl shadow-purple-500/10'
+              : 'bg-white/70 border-gray-200/50 shadow-2xl shadow-blue-500/10'
               }`}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5" />
@@ -252,8 +252,8 @@ export default function Home() {
                 <>
                   <div className="flex items-center gap-3 mb-8">
                     <div className={`p-3 rounded-xl ${isDark
-                        ? 'bg-gradient-to-br from-blue-500/20 to-purple-500/20'
-                        : 'bg-gradient-to-br from-blue-100 to-purple-100'
+                      ? 'bg-gradient-to-br from-blue-500/20 to-purple-500/20'
+                      : 'bg-gradient-to-br from-blue-100 to-purple-100'
                       }`}>
                       <Lock className={`w-6 h-6 ${isDark ? 'text-blue-400' : 'text-blue-600'}`} />
                     </div>
@@ -272,8 +272,8 @@ export default function Home() {
                 <>
                   <div className="flex items-center gap-3 mb-8">
                     <div className={`p-3 rounded-xl ${isDark
-                        ? 'bg-gradient-to-br from-purple-500/20 to-pink-500/20'
-                        : 'bg-gradient-to-br from-purple-100 to-pink-100'
+                      ? 'bg-gradient-to-br from-purple-500/20 to-pink-500/20'
+                      : 'bg-gradient-to-br from-purple-100 to-pink-100'
                       }`}>
                       <Key className={`w-6 h-6 ${isDark ? 'text-purple-400' : 'text-purple-600'}`} />
                     </div>
@@ -304,8 +304,8 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
                   className={`relative overflow-hidden rounded-2xl backdrop-blur-md border transition-all ${isDark
-                      ? 'bg-slate-900/50 border-slate-700/50 shadow-xl shadow-purple-500/10'
-                      : 'bg-white/70 border-gray-200/50 shadow-xl shadow-purple-500/10'
+                    ? 'bg-slate-900/50 border-slate-700/50 shadow-xl shadow-purple-500/10'
+                    : 'bg-white/70 border-gray-200/50 shadow-xl shadow-purple-500/10'
                     }`}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5" />
@@ -325,16 +325,16 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
                   className={`relative overflow-hidden rounded-2xl backdrop-blur-md border transition-all h-full flex flex-col ${isDark
-                      ? 'bg-slate-900/50 border-slate-700/50 shadow-xl shadow-purple-500/10'
-                      : 'bg-white/70 border-gray-200/50 shadow-xl shadow-blue-500/10'
+                    ? 'bg-slate-900/50 border-slate-700/50 shadow-xl shadow-purple-500/10'
+                    : 'bg-white/70 border-gray-200/50 shadow-xl shadow-blue-500/10'
                     }`}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5" />
                   <div className="relative p-6 flex-1 flex flex-col">
                     <div className="flex items-center gap-3 mb-6">
                       <div className={`p-2 rounded-lg ${isDark
-                          ? 'bg-gradient-to-br from-blue-500/20 to-purple-500/20'
-                          : 'bg-gradient-to-br from-blue-100 to-purple-100'
+                        ? 'bg-gradient-to-br from-blue-500/20 to-purple-500/20'
+                        : 'bg-gradient-to-br from-blue-100 to-purple-100'
                         }`}>
                         <Shield className={`w-5 h-5 ${isDark ? 'text-blue-400' : 'text-blue-600'}`} />
                       </div>
@@ -358,16 +358,16 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
                   className={`relative overflow-hidden rounded-2xl backdrop-blur-md border transition-all h-full flex flex-col ${isDark
-                      ? 'bg-slate-900/50 border-slate-700/50 shadow-xl shadow-cyan-500/10'
-                      : 'bg-white/70 border-gray-200/50 shadow-xl shadow-cyan-500/10'
+                    ? 'bg-slate-900/50 border-slate-700/50 shadow-xl shadow-cyan-500/10'
+                    : 'bg-white/70 border-gray-200/50 shadow-xl shadow-cyan-500/10'
                     }`}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-500/5" />
                   <div className="relative p-6 flex-1 flex flex-col">
                     <div className="flex items-center gap-3 mb-4">
                       <div className={`p-2 rounded-lg ${isDark
-                          ? 'bg-gradient-to-br from-cyan-500/20 to-blue-500/20'
-                          : 'bg-gradient-to-br from-cyan-100 to-blue-100'
+                        ? 'bg-gradient-to-br from-cyan-500/20 to-blue-500/20'
+                        : 'bg-gradient-to-br from-cyan-100 to-blue-100'
                         }`}>
                         <span className="text-lg">🔤</span>
                       </div>
@@ -391,10 +391,10 @@ export default function Home() {
                             {item.label}
                           </span>
                           <span className={`text-sm font-bold ${item.color === 'blue' ? 'text-blue-500' :
-                              item.color === 'green' ? 'text-green-500' :
-                                item.color === 'purple' ? 'text-purple-500' :
-                                  item.color === 'yellow' ? 'text-yellow-500' :
-                                    'text-red-500'
+                            item.color === 'green' ? 'text-green-500' :
+                              item.color === 'purple' ? 'text-purple-500' :
+                                item.color === 'yellow' ? 'text-yellow-500' :
+                                  'text-red-500'
                             }`}>
                             {item.value}
                           </span>
@@ -412,16 +412,16 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7 }}
                   className={`relative overflow-hidden rounded-2xl backdrop-blur-md border transition-all h-full flex flex-col ${isDark
-                      ? 'bg-slate-900/50 border-slate-700/50 shadow-xl shadow-yellow-500/10'
-                      : 'bg-white/70 border-gray-200/50 shadow-xl shadow-yellow-500/10'
+                    ? 'bg-slate-900/50 border-slate-700/50 shadow-xl shadow-yellow-500/10'
+                    : 'bg-white/70 border-gray-200/50 shadow-xl shadow-yellow-500/10'
                     }`}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-orange-500/5" />
                   <div className="relative p-6 flex-1 flex flex-col">
                     <div className="flex items-center gap-3 mb-4">
                       <div className={`p-2 rounded-lg ${isDark
-                          ? 'bg-gradient-to-br from-yellow-500/20 to-orange-500/20'
-                          : 'bg-gradient-to-br from-yellow-100 to-orange-100'
+                        ? 'bg-gradient-to-br from-yellow-500/20 to-orange-500/20'
+                        : 'bg-gradient-to-br from-yellow-100 to-orange-100'
                         }`}>
                         <span className="text-lg">📚</span>
                       </div>
@@ -461,8 +461,8 @@ export default function Home() {
                                   <span
                                     key={index}
                                     className={`px-2 py-1 rounded text-xs font-medium ${isDark
-                                        ? 'bg-slate-700/50 text-slate-300'
-                                        : 'bg-gray-200/50 text-gray-700'
+                                      ? 'bg-slate-700/50 text-slate-300'
+                                      : 'bg-gray-200/50 text-gray-700'
                                       }`}
                                   >
                                     {type}
@@ -501,16 +501,16 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.8 }}
                   className={`relative overflow-hidden rounded-2xl backdrop-blur-md border transition-all h-full flex flex-col ${isDark
-                      ? 'bg-slate-900/50 border-slate-700/50 shadow-xl shadow-red-500/10'
-                      : 'bg-white/70 border-gray-200/50 shadow-xl shadow-orange-500/10'
+                    ? 'bg-slate-900/50 border-slate-700/50 shadow-xl shadow-red-500/10'
+                    : 'bg-white/70 border-gray-200/50 shadow-xl shadow-orange-500/10'
                     }`}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 to-orange-500/5" />
                   <div className="relative p-6 flex-1 flex flex-col">
                     <div className="flex items-center gap-3 mb-6">
                       <div className={`p-2 rounded-lg ${isDark
-                          ? 'bg-gradient-to-br from-red-500/20 to-orange-500/20'
-                          : 'bg-gradient-to-br from-red-100 to-orange-100'
+                        ? 'bg-gradient-to-br from-red-500/20 to-orange-500/20'
+                        : 'bg-gradient-to-br from-red-100 to-orange-100'
                         }`}>
                         <span className="text-xl">⏱️</span>
                       </div>
@@ -549,8 +549,8 @@ export default function Home() {
                         <motion.div
                           key={index}
                           className={`p-4 rounded-xl transition-all ${isDark
-                              ? 'bg-slate-800/50 hover:bg-slate-800/70'
-                              : 'bg-gray-50/50 hover:bg-gray-50/80'
+                            ? 'bg-slate-800/50 hover:bg-slate-800/70'
+                            : 'bg-gray-50/50 hover:bg-gray-50/80'
                             } border ${isDark ? 'border-slate-700/50' : 'border-gray-200/50'
                             }`}
                           initial={{ opacity: 0, x: 20 }}
@@ -565,12 +565,12 @@ export default function Home() {
                             <div className={`w-3 h-3 rounded-full bg-${item.color}-500`} />
                           </div>
                           <p className={`font-mono text-sm font-bold ${item.color === 'red'
-                              ? 'text-red-500'
-                              : item.color === 'orange'
-                                ? 'text-orange-500'
-                                : item.color === 'yellow'
-                                  ? 'text-yellow-500'
-                                  : 'text-emerald-500'
+                            ? 'text-red-500'
+                            : item.color === 'orange'
+                              ? 'text-orange-500'
+                              : item.color === 'yellow'
+                                ? 'text-yellow-500'
+                                : 'text-emerald-500'
                             }`}>
                             {item.time}
                           </p>
@@ -588,16 +588,16 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.9 }}
                   className={`relative overflow-hidden rounded-2xl backdrop-blur-md border transition-all h-full flex flex-col ${isDark
-                      ? 'bg-slate-900/50 border-slate-700/50 shadow-xl shadow-green-500/10'
-                      : 'bg-white/70 border-gray-200/50 shadow-xl shadow-green-500/10'
+                    ? 'bg-slate-900/50 border-slate-700/50 shadow-xl shadow-green-500/10'
+                    : 'bg-white/70 border-gray-200/50 shadow-xl shadow-green-500/10'
                     }`}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-blue-500/5" />
                   <div className="relative p-6 flex-1 flex flex-col">
                     <div className="flex items-center gap-3 mb-6">
                       <div className={`p-2 rounded-lg ${isDark
-                          ? 'bg-gradient-to-br from-green-500/20 to-blue-500/20'
-                          : 'bg-gradient-to-br from-green-100 to-blue-100'
+                        ? 'bg-gradient-to-br from-green-500/20 to-blue-500/20'
+                        : 'bg-gradient-to-br from-green-100 to-blue-100'
                         }`}>
                         <Zap className={`w-5 h-5 ${isDark ? 'text-green-400' : 'text-green-600'}`} />
                       </div>
@@ -614,8 +614,8 @@ export default function Home() {
                         <motion.div
                           key={index}
                           className={`flex items-start gap-3 p-3 rounded-lg transition-colors ${isDark
-                              ? 'bg-slate-800/30 hover:bg-slate-800/50'
-                              : 'bg-gray-50/50 hover:bg-gray-50/80'
+                            ? 'bg-slate-800/30 hover:bg-slate-800/50'
+                            : 'bg-gray-50/50 hover:bg-gray-50/80'
                             }`}
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
@@ -642,8 +642,8 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.0 }}
                   className={`relative overflow-hidden rounded-2xl backdrop-blur-md border transition-all ${isDark
-                      ? 'bg-slate-900/50 border-slate-700/50 shadow-xl shadow-indigo-500/10'
-                      : 'bg-white/70 border-gray-200/50 shadow-xl shadow-indigo-500/10'
+                    ? 'bg-slate-900/50 border-slate-700/50 shadow-xl shadow-indigo-500/10'
+                    : 'bg-white/70 border-gray-200/50 shadow-xl shadow-indigo-500/10'
                     }`}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-500/5" />
@@ -670,8 +670,8 @@ export default function Home() {
             transition={{ duration: 0.8 }}
           >
             <div className={`inline-flex items-center gap-3 mb-6 p-4 rounded-2xl ${isDark
-                ? 'bg-gradient-to-br from-slate-800/80 to-purple-900/80'
-                : 'bg-gradient-to-br from-white/80 to-blue-50/80'
+              ? 'bg-gradient-to-br from-slate-800/80 to-purple-900/80'
+              : 'bg-gradient-to-br from-white/80 to-blue-50/80'
               } backdrop-blur-md border ${isDark ? 'border-slate-700/50' : 'border-gray-200/50'
               }`}>
               <Shield className={`w-6 h-6 ${isDark ? 'text-purple-400' : 'text-blue-600'}`} />
